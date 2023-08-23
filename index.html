@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        body{
+            padding-top: 150px;
+            
+        }
+        .head{
+            background-color: black;
+            color: white;
+            
+        }
+        .mainbody{
+            background-color: rgb(247, 238, 229);
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px rgb(121, 121, 122);
+
+        
+            
+            
+        }
+        button:hover{
+            color: rgb(15, 14, 14);
+            background-color: rgb(150, 157, 163);
+            border: 2px solid rgb(49, 46, 46);
+        }
+        
+        
+        button{
+            background-color: black;
+            color: white;
+            border-radius: 3px;
+            width: 100%;
+        
+        }
+        input{
+            border: 2px solid black;
+            border-radius: 2px;
+            
+        }
+        input:focus{
+            background-color: rgb(222, 218, 185);
+        }
+    
+        th{
+            background-color: rgb(154, 154, 139);
+            border-radius: 4px;
+            border: 2px solid rgb(23, 22, 22);
+        }
+        .total{
+            height: 50px;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <table align="center" border="7" class="mainbody">
+        <tr>
+            <th colspan="4" class="head">Calculator</th>
+            
+        </tr>
+        <tr>
+            <th colspan="4">
+                <input type="text" placeholder="Enter Your Digit" id="display">
+            </th>
+            
+        </tr>
+        
+        <tr>
+            <th colspan="2" onclick="removeLastDigit()"><button>Delete</button></th>
+            <th><button onclick="appendToDisplay('/')" >/</button></th>
+            <th><button onclick="appendToDisplay('*')">x</button></th>
+        </tr>
+
+        <tr>
+            <th><button onclick="appendToDisplay('1')">1</button></th>
+            <th><button onclick="appendToDisplay('2')">2</button></th>
+            <th><button onclick="appendToDisplay('3')">3</button></th>
+            <th><button onclick="appendToDisplay('-')">-</button></th>
+        
+        </tr>
+        <tr>
+            <th><button onclick="appendToDisplay('4')">4</button></th>
+            <th><button onclick="appendToDisplay('5')">5</button></th>
+            <th><button onclick="appendToDisplay('6')">6</button></th>
+            <th><button onclick="appendToDisplay('+')">+</button></th>
+        </tr>
+        <tr>
+            <th><button onclick="appendToDisplay('7')">7</button></th>
+            <th><button onclick="appendToDisplay('8')">8</button></th>
+            <th><button onclick="appendToDisplay('9')">9</button></th>
+            <th rowspan="2" ><button class="total" onclick="calculate()">=</button></th>
+            
+           
+        </tr>
+        <tr>
+            <th><button onclick="clearDisplay()">C</button></th>
+            <th><button onclick="appendToDisplay('0')">0</button></th>
+            <th><button onclick="appendToDisplay('.')">.</button></th>
+            
+        </tr>
+        
+
+    </table>
+    
+<script>
+ function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+      }
+  
+
+    function removeLastDigit() {
+        const displayValue = document.getElementById('display').value;
+        document.getElementById('display').value = displayValue.slice(0, -1);
+      }
+
+    function calculate() {
+      try {
+        const result = eval(document.getElementById('display').value);
+        document.getElementById('display').value = result;
+      } catch (error) {
+        document.getElementById('display').value = 'Error';
+      }
+    }   
+</script>   
+</body>
+</html>
